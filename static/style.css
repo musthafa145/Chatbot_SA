@@ -288,3 +288,161 @@ body {
 .empty-state p {
     font-size: 14px;
 }
+
+/* ===== INPUT POLISH ===== */
+.input-container {
+    width: 66%;
+    margin: 20px auto;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+}
+
+#message-input {
+    flex: 1;
+    height: 56px;
+    padding: 14px 16px;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+#message-input::placeholder {
+    color: #9ca3af;
+}
+
+#message-input:focus {
+    outline: none;
+}
+
+#send-button {
+    height: 48px;
+    width: 48px;
+    border-radius: 10px;
+    border: none;
+    background-color: #3b82f6;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#send-button:hover {
+    background-color: #2563eb;
+}
+
+
+#message-input {
+    resize: none;                 /* disable manual resize */
+    overflow-y: auto;
+    min-height: 48px;
+    max-height: 160px;             /* ChatGPT-like max height */
+    line-height: 1.4;
+}
+
+.chat-container {
+    width: 800px;          /* same as input container */
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+
+/* Example for input container */
+#input-container {
+    border-radius: 15px; /* Adjust the value for more or less curve */
+    padding: 10px;
+    border: 1px solid #ccc; /* Optional: border style */
+}
+/* For the input container */
+
+
+#input-container {
+    display: flex;
+    align-items: center;
+    width: 600px;            /* stretch it horizontally */
+    height: 50px;            /* shorter height for pill */
+    padding: 0 15px;         /* horizontal padding inside */
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 25px;     /* half of height = perfect pill */
+    box-sizing: border-box;
+}
+
+/* Input field inside the container */
+#input-container input {
+    flex: 1;                 /* fills remaining space */
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    height: 100%;
+}
+
+/* Optional: Send button inside container */
+#input-container button {
+    border: none;
+    background: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50%;      /* circular button */
+    cursor: pointer;
+}
+
+
+/* Input container */
+#input-container {
+    display: flex;
+    align-items: center;
+    width: 80%;              /* make it wide relative to height */
+    max-width: 700px;        /* optional max width */
+    height: 50px;            /* pill height */
+    padding: 0 20px;         /* horizontal padding inside */
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 9999px;   /* makes it fully oval */
+    box-sizing: border-box;
+    margin: 20px auto;       /* center horizontally if needed */
+}
+
+/* Input inside the container */
+#input-container input {
+    flex: 1;                 /* fills horizontal space */
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    height: 100%;            /* fills container height */
+}
+
+/* Optional: Send button */
+#input-container button {
+    border: none;
+    background: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50%;      /* circular button */
+    cursor: pointer;
+}
+#input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;          /* fixed width */
+    height: 50px;          /* shorter height for pill */
+    padding: 0 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 25px;   /* half of height → pill shape */
+    box-sizing: border-box;
+    margin: 20px auto;     /* center horizontally */
+}
