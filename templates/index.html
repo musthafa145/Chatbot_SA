@@ -2,19 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Company Chatbot</h1>
-    <div class="chat-container">
-        <!-- Chat messages will appear here -->
-    </div>
-    <div class="input-container">
-        <input type="text" id="message-input" placeholder="Type your message...">
-        <button id="send-button">Send</button>
-    </div>
-    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+
+<div class="app-container">
+
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Company Chatbot</h2>
+            <button class="new-chat-btn">+ New chat</button>
+        </div>
+
+        <div class="chat-history">
+            <div class="chat-item active">Chat 1</div>
+            <div class="chat-item">Chat 2</div>
+            <div class="chat-item">Chat 3</div>
+        </div>
+    </aside>
+
+    <!-- ========== CHAT AREA ========== -->
+    <main class="chat-main">
+
+        <div class="chat-header">
+            <h3>Conversation</h3>
+        </div>
+
+        <div class="chat-container">
+            <!-- Empty state (removed on first message) -->
+            <div class="empty-state">
+                <h2>How can I help you today?</h2>
+                <p>Ask questions about your company data.</p>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <input
+                type="text"
+                id="message-input"
+                placeholder="Type your message..."
+                autocomplete="off"
+            >
+            <button id="send-button">Send</button>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='chat.js') }}"></script>
+
 </body>
 </html>
