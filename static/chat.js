@@ -53,15 +53,31 @@ function switchChat(chatId) {
 }
 
 function loadChat(chatId) {
-    chatContainer.innerHTML = "";
-    conversations[chatId].forEach(msg => {
-        addMessage(msg.text, msg.sender, false);
-    });
+    chatContainer.innerHTML = "";  // clear old messages
+
+    const messages = conversations[chatId];
+    if (messages.length === 0) {
+        // Show empty state if no messages
+        const emptyDiv = document.createElement("div");
+        emptyDiv.className = "empty-state";
+        emptyDiv.innerHTML = `
+            <h2>How can I help you today?</h2>
+            <p>Ask me anything.</p>
+        `;
+        chatContainer.appendChild(emptyDiv);
+    } else {
+        messages.forEach(msg => {
+            addMessage(msg.text, msg.sender, false);
+        });
+    }
 }
 
 /* ----------------- MESSAGE FUNCTIONS ----------------- */
 
 function addMessage(message, sender = "user", save = true) {
+    const emptyState = document.querySelector(".empty-state");
+    if (emptyState) emptyState.remove(); // remove empty state on first message
+
     const messageDiv = document.createElement("div");
     messageDiv.classList.add("message", sender);
     messageDiv.textContent = message;
@@ -93,24 +109,23 @@ function addTypingIndicator() {
 
 sendButton.addEventListener("click", sendMessage);
 
+function autoResizeTextarea(el) {
+    el.style.height = "auto";   // reset height first
+    el.style.height = Math.min(el.scrollHeight, 200) + "px";
+}
 
 // Auto-expand textarea
 inputBox.addEventListener("input", () => {
-    inputBox.style.height = "auto";
-    inputBox.style.height = Math.min(inputBox.scrollHeight, 160) + "px";
+    autoResizeTextarea(inputBox);
 });
 
 inputBox.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
-        if (e.shiftKey) {
-            return; // allow new line
-        }
-        e.preventDefault(); // stop newline
+        if (e.shiftKey) return; // allow new line
+        e.preventDefault();      // stop newline
         sendButton.click();
     }
 });
-
-
 
 newChatBtn.addEventListener("click", createNewChat);
 
@@ -120,11 +135,12 @@ async function sendMessage() {
 
     addMessage(message, "user");
     inputBox.value = "";
+    inputBox.style.height = "auto";
 
     const typing = addTypingIndicator();
 
     try {
-        await new Promise(r => setTimeout(r, 700));
+        await new Promise(r => setTimeout(r, 700)); // simulate delay
 
         const response = await fetch("/chat", {
             method: "POST",

@@ -95,6 +95,7 @@ body {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
+    position: relative;
 }
 
 /* ===== INPUT AREA ===== */
@@ -352,7 +353,7 @@ body {
     max-width: 90%;
     margin: 0 auto;
     padding: 20px;
-    overflow-y: auto;
+    overflow-y: visible;
     flex: 1;
 }
 
@@ -445,4 +446,135 @@ body {
     border-radius: 25px;   /* half of height → pill shape */
     box-sizing: border-box;
     margin: 20px auto;     /* center horizontally */
+}
+
+.message {
+    margin-bottom: 16px;
+    line-height: 1.6;
+    font-size: 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* USER MESSAGE (bubble, right) */
+.message.user {
+    max-width: 66%;
+    margin-left: auto;
+    background-color: #2f2f2f;   /* dark bubble */
+    color: #ffffff;              /* white text */
+    padding: 12px 16px;
+    border-radius: 14px;
+}
+
+/* BOT MESSAGE (full width, no bubble) */
+.message.bot {
+    width: 100%;
+    margin-right: auto;
+    background: none;
+    padding: 0;
+    color: #e6e6e6;               /* soft white text */
+}
+
+
+#message-input {
+    width: 100%;
+    min-height: 48px;
+    max-height: 200px;
+
+    padding: 14px 18px;
+    font-size: 15px;
+    line-height: 1.5;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 24px;   /* THIS is the key */
+    background-color: #1f1f1f;
+    color: #ffffff;
+
+    resize: none;
+    outline: none;
+}
+
+.chat-main {
+    overflow-y: auto;
+}
+
+
+/* Minimal scrollbar (ChatGPT style) */
+.chat-main::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-main::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+.chat-main::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.empty-state {
+    text-align: center;
+    margin-top: 120px;
+    color: #bdbdbd;
+}
+
+.empty-state h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    text-align: center;
+
+    color: #bdbdbd;
+    pointer-events: none;
+}
+
+.empty-state h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+.empty-state {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    color: #bdbdbd;
+    pointer-events: none;
+}
+
+.empty-state h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    font-size: 14px;
+    opacity: 0.8;
 }
