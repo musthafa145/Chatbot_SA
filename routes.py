@@ -11,15 +11,7 @@ local_db = {
 
 def register_routes(app):
 
-    @app.route('/chat', methods=['POST'])
-    def chat():
-        user_message = request.json.get("message", "")
-        if not user_message:
-            return {"reply": "Please type a message"}
-
-        print(f"User message: {user_message}")
-        return {"reply": user_message}
-
+    
     @app.route('/db-query', methods=['POST'])
     def db_query():
         query = request.json.get("query", "").lower()
